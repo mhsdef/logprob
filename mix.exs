@@ -5,9 +5,11 @@ defmodule LogProb.MixProject do
     [
       app: :logprob,
       version: "0.1.0",
-      elixir: "~> 1.18",
+      elixir: "~> 1.2",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      description: "Log probabilities made simple",
+      deps: deps(),
+      package: package()
     ]
   end
 
@@ -19,7 +21,16 @@ defmodule LogProb.MixProject do
 
   defp deps do
     [
-      {:decimal, "~> 2.3"}
+      {:decimal, "~> 2.3"},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+    ]
+  end
+
+  defp package() do
+    [
+      maintainers: ["Matt Sutton"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/mhsdef/logprob"}
     ]
   end
 end
