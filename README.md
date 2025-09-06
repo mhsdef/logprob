@@ -1,6 +1,6 @@
 # LogProb
 
-`:logprob` is a small, focused libary to store, compare, and format probabilities in a safe way—without forcing you to become a math expert. You don’t have to “do math in log space” yourself.
+`LogProb` is a small, focused libary to store, compare, and format probabilities in a safe way—without forcing you to become a math expert. You don’t have to “do math in log space” yourself.
 
 Work with probabilities in a way that is:
 - 🧱 Stable, avoid numerical underflow with very tiny probabilities
@@ -37,7 +37,7 @@ end
 
 ## Plain Language Usage
 
-A `LogProb` is just a tiny wrapper around `Decimal`:
+A `LogProb` is just a tiny wrapper around a `Decimal`:
 
 ```elixir
 %LogProb{value: #Decimal<-2.3025850929940455>}
@@ -102,17 +102,17 @@ LogProb.compare(a, b)
 
 ## FAQ
 
-Q: Do I need to know logarithms to use this?
+#### Q: Do I need to know logarithms to use this?
 A: No. Treat `LogProb` as a probability wrapper.
 
-Q: Why are the numbers negative?
+#### Q: Why are the numbers negative?
 A: Because logs of numbers between 0 and 1 are negative. Closer to zero = more likely.
 
-Q: Can I add two `LogProb` values?
+#### Q: Can I add two `LogProb` values?
 A: Not yet. Today this library focuses on representation, conversion, and comparison. Future versions might include safe combination helpers.
 
-Q: What about base-10 logs?
+#### Q: What about base-10 logs?
 A: This uses natural log (base e). That’s standard for probability work.
 
-Q: Will precision drift?
+#### Q: Will precision drift?
 A: Internally we store a `Decimal`, and convert through floats only when necessary (e.g. `:math.exp`). Decimal does an excellent job in its concerns so we expect our (very slight) extension here to be fine for typical application-level usage.
